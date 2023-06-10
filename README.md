@@ -1,0 +1,2 @@
+# Back-end-animeNews
+ Este projeto em desenvolvimento é um back-end em Java utilizando o Spring Framework e Spring Boot, com recursos de validação e segurança. O objetivo é criar uma API para um site de notícias sobre animes, fornecendo os dados necessários para o front-end. Serão implementadas rotas RESTful para manipulação de recursos de notícias, com validação e segurança garantidas pelo Spring Validation e Spring Security. O foco é entregar uma API robusta e segura, integrando-se perfeitamente ao front-end do site de notícias sobre animes.
