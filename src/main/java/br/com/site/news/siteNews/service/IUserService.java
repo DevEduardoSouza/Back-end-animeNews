@@ -9,6 +9,6 @@ import br.com.site.news.siteNews.model.UserModel;
 public interface IUserService {
     //
     public abstract List<UserModel> getUsers();
-    public abstract ResponseEntity<?> registerUser(UserModel user);
+    public abstract ResponseEntity<Object> registerUser(UserModel user);
     
 }

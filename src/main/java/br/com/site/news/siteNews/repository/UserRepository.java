@@ -7,5 +7,7 @@ import br.com.site.news.siteNews.model.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long>{
+
+    boolean existsByEmail(String email);
     
 }

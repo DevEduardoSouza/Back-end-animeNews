@@ -22,7 +22,7 @@ public class UserFacade implements IUserFacade{
     }
 
     @Override
-    public ResponseEntity<?> registerUser(UserModel user) {
+    public ResponseEntity<Object> registerUser(UserModel user) {
         // TODO Auto-generated method stub
         return userService.registerUser(user);
     }

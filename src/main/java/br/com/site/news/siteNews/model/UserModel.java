@@ -1,5 +1,8 @@
 package br.com.site.news.siteNews.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -13,20 +16,18 @@ import lombok.Data;
 @Table(name = "users")
 public class UserModel extends AbstractEntity {
 
-    @NotBlank(message = "Nome é obrigatório")
-    @Size(min = 4, max = 128, message = "O nome precisa ter no mínimo 4 caracteres e no máximo 128")
+    @Column(nullable = false)
     private String name;
     
-    @NotBlank(message = "Username é obrigatório")
-    @Size(min = 4, max = 128, message = "O username precisa ter no mínimo 4 caracteres e no máximo 128")
+    @Column(nullable = false)
     private String username;
 
-    @Email(message = "O email está incorreto")
-    @Column(unique = true)
-    @NotBlank(message = "Email é obrigatório")
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Size(min = 8, max = 128, message = "A senha precisa ter no mínimo 8 caracteres e no máximo 128")
-    @NotBlank(message = "A senha é obrigatória")
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private LocalDateTime registerDate;
 }

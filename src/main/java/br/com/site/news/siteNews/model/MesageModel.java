@@ -10,5 +10,4 @@ import lombok.Data;
 @Data
 public class MesageModel {
     private Map<String, String> errors;
-    
 }

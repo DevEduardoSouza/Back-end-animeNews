@@ -24,9 +24,14 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public ResponseEntity<?> registerUser(UserModel user) {
-        // TODO Auto-generated method stub
-            return new ResponseEntity<UserModel>(userRepository.save(user), HttpStatus.OK);
+    public ResponseEntity<Object> registerUser(UserModel user) {
+       
+        // Verificar se o email já existe
+        if(userRepository.existsByEmail(user.getEmail())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O Email já existe");
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(user));
     }
     
 }
