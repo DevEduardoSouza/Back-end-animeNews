@@ -1,8 +1,6 @@
 package br.com.site.news.siteNews.exceptionHandler;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.validation.FieldError;
@@ -24,7 +22,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     protected  org.springframework.http.ResponseEntity<java.lang.Object> handleMethodArgumentNotValid(org.springframework.web.bind.MethodArgumentNotValidException ex, org.springframework.http.HttpHeaders headers, org.springframework.http.HttpStatusCode status, org.springframework.web.context.request.WebRequest request) {
      
-        // Limpar as mensagem antes evinvar os erros para o front
+        // Limpar as mensagem antes enviar os erros para o front
         listErrors.clear();
         
         for(ObjectError error : ex.getBindingResult().getAllErrors()){
