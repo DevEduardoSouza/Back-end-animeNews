@@ -29,6 +29,7 @@ public class AuthController {
 
     @Autowired
     private IUserFacade userFacade;
+
     
     @GetMapping("/listar")
     public List<UserModel> getUsers(){
@@ -46,7 +47,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(){
+    public ResponseEntity<Object> login(RequestBody @Valid LoginDto login){
         return ResponseEntity.status(HttpStatus.OK).body("teste");
     }
 
