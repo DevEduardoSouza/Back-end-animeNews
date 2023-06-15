@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
+import br.com.site.news.siteNews.dtos.LoginDto;
 import org.apache.catalina.connector.Response;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +49,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(RequestBody @Valid LoginDto login){
+    public ResponseEntity<Object> login(@RequestBody @Valid LoginDto login){
         return ResponseEntity.status(HttpStatus.OK).body("teste");
     }
 
