@@ -4,8 +4,11 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +25,7 @@ import jakarta.validation.Valid;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
-public class UserController {
+public class AuthController {
 
     @Autowired
     private IUserFacade userFacade;
@@ -32,16 +35,21 @@ public class UserController {
         return userFacade.getUsers();
     }
 
-    //Salvar usuário
+    //Cadastar usuário
     @PostMapping("/cadastrar")
-    public ResponseEntity<Object> salvarUser(@RequestBody @Valid UserDto userDto){
-        
+    public ResponseEntity<Object> cadastrar(@RequestBody @Valid UserDto userDto){
         UserModel userModel = new UserModel();
         BeanUtils.copyProperties(userDto, userModel);
         userModel.setRegisterDate(LocalDateTime.now(ZoneId.of("UTC")));
 
-
         return userFacade.registerUser(userModel);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(){
+        return ResponseEntity.status(HttpStatus.OK).body("teste");
+    }
+
+    
     
 }
