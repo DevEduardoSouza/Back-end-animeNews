@@ -32,7 +32,7 @@ public class AuthController {
     @Autowired
     private IUserFacade userFacade;
 
-    
+
     @GetMapping("/listar")
     public List<UserModel> getUsers(){
         return userFacade.getUsers();
@@ -53,6 +53,10 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body("teste");
     }
 
-    
+//    Endpoint home para teste de autenticação
+    @GetMapping("/home")
+    public String home(){
+        return "Você está autenticado";
+    }
     
 }
