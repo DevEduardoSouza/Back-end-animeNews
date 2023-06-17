@@ -19,13 +19,15 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(
                         authorizeConfig -> {
-                            authorizeConfig.requestMatchers("/login").permitAll();
-                            authorizeConfig.requestMatchers("/logout").permitAll();
-                            authorizeConfig.requestMatchers("/cadastrar").permitAll();
-                            authorizeConfig.requestMatchers("/public").permitAll();
+                            authorizeConfig.requestMatchers("/api/logout").permitAll();
+                            authorizeConfig.requestMatchers("/api/cadastrar").permitAll();
+                            authorizeConfig.requestMatchers("/api/public").permitAll();
                             authorizeConfig.anyRequest().authenticated();
                         }
                 )
+//                .formLogin(formLogin -> formLogin.loginPage("/api/login")
+//                        .permitAll()
+//                )
                 .formLogin(Customizer.withDefaults())
                 .build();
     }
