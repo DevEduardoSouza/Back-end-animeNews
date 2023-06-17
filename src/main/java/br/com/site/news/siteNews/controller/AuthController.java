@@ -58,5 +58,11 @@ public class AuthController {
     public String home(){
         return "Você está autenticado";
     }
+
+
+    @GetMapping("/public")
+    public String publica(){
+        return "rota publica";
+    }
     
 }

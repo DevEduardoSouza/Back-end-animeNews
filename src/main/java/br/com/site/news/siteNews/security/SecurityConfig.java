@@ -4,6 +4,7 @@ package br.com.site.news.siteNews.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,9 +22,11 @@ public class SecurityConfig {
                             authorizeConfig.requestMatchers("/login").permitAll();
                             authorizeConfig.requestMatchers("/logout").permitAll();
                             authorizeConfig.requestMatchers("/cadastrar").permitAll();
+                            authorizeConfig.requestMatchers("/public").permitAll();
                             authorizeConfig.anyRequest().authenticated();
                         }
                 )
+                .formLogin(Customizer.withDefaults())
                 .build();
     }
 }
