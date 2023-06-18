@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,6 +74,18 @@ public class AuthController {
 				""", user, user.getAttribute("email"), user.getAuthorities(),
                 user.getIdToken().getTokenValue());
     }
+
+    @GetMapping("/jwt")
+    public String jwt(@AuthenticationPrincipal Jwt jwt){
+        return String.format("""
+				Principal: %s\n
+				Email attribute: %s\n
+				JWT: %s\n
+				""", jwt.getClaims(), jwt.getClaim("email"), jwt.getTokenValue());
+    }
+
+
+
 
 
     @GetMapping("/public")
