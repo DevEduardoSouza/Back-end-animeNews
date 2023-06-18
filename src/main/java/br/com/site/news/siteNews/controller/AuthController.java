@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,9 +56,22 @@ public class AuthController {
     }
 
 //    Endpoint home para teste de autenticação
+
+
     @GetMapping("/home")
-    public String home(){
-        return "Você está autenticado";
+    public String home(@AuthenticationPrincipal OidcUser user){
+        return "Rota privada";
+    }
+    @GetMapping("/cookie")
+    public String cookie(@AuthenticationPrincipal OidcUser user){
+        return String.format("""
+					<h1>Oauth2 🔐  </h1>
+				<h3>Principal: %s</h3>
+				<h3>Email attribute: %s</h3>
+				<h3>Authorities: %s</h3>
+				<h3>JWT: %s</h3>
+				""", user, user.getAttribute("email"), user.getAuthorities(),
+                user.getIdToken().getTokenValue());
     }
 
 
